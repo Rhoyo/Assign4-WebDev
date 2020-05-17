@@ -12,7 +12,7 @@ var indexJs= fs.readFileSync('./public/index.js','utf8');
 var style= fs.readFileSync('./public/style.css','utf8');
 var fourZero= fs.readFileSync('./public/404.html','utf8');
 
-var server=createServer(function(req,res){
+var server= http.createServer(function(req,res){
   if(req.url=="/index.html"){
     res.writeHead(200, {
       "Content-Type": "text/html"
@@ -21,7 +21,7 @@ var server=createServer(function(req,res){
   }
   if(req.url=="/index.js"){
     res.writeHead(200, {
-      "Content-Type": "text/javascript"
+      "Content-Type": "application/javascript"
     });
     res.write(indexJs);
   }
