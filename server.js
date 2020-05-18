@@ -33,30 +33,37 @@ var server = http.createServer(function (req, res) {
     });
     res.write(style);
   }
-  if(req.url==="/index.js"){
+  else if(req.url==="/index.js"){
     res.writeHead(200, {
       "Content-Type": "application/javascript"
     });
     res.write(indexJs);
   }
-  if(req.url==="/index.html"||req.url==="/"){
+  else if(req.url==="/index.html"||req.url==="/"){
     res.writeHead(200, {
       "Content-Type": "text/html"
     });
     res.write(indexHtml);
   }
-  if(req.url==="/404.html"){
+  else if(req.url==="/404.html"){
     res.writeHead(200, {
       "Content-Type": "text/html"
     });
     res.write(fourZero);
   }
-  if(req.url!=="404.html"&&req.url!=="/index.html"&&req.url!=="/"&&req.url!=="/style.css"&&req.url!=="/index.js"){
+  else{
     res.writeHead(404, {
       "Content-Type": "text/html"
     });
     res.write(fourZero);
   }
+  /*if(req.url!=="404.html"&&req.url!=="/index.html"&&req.url!=="/"&&req.url!=="/style.css"&&req.url!=="/index.js"){
+    res.writeHead(404, {
+      "Content-Type": "text/html"
+    });
+    res.write(fourZero);
+  }
+  */
   res.end();
 
 
