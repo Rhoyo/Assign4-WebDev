@@ -7,6 +7,7 @@
 var fs= require('fs');
 var http= require('http');
 var path= require('path');
+const PORT = process.env.PORT || 3000;
 
 
 var indexJs= fs.readFileSync("./public/index.js",'utf8');
@@ -57,16 +58,7 @@ var server = http.createServer(function (req, res) {
     });
     res.write(fourZero);
   }
-  /*if(req.url!=="404.html"&&req.url!=="/index.html"&&req.url!=="/"&&req.url!=="/style.css"&&req.url!=="/index.js"){
-    res.writeHead(404, {
-      "Content-Type": "text/html"
-    });
-    res.write(fourZero);
-  }
-  */
   res.end();
-
-
 });
 server.listen(3000,function(){
   console.log("server is listening on 3000");
