@@ -9,14 +9,14 @@ var http= require('http');
 var path= require('path');
 
 var indexJs= fs.readFileSync("./public/index.js",'utf8');
-console.log(indexJs);
+console.log("read JS");
 var style= fs.readFileSync("./public/style.css",'utf8');
-console.log(style);
+console.log("read STYLE");
 
 var indexHtml= fs.readFileSync("./public/index.html",'utf8');
-console.log(indexHtml);
+console.log("read indexHTML");
 var fourZero= fs.readFileSync("./public/404.html",'utf8');
-console.log(fourZero);
+console.log("read 404");
 
 
 var server = http.createServer(function (req, res) {
