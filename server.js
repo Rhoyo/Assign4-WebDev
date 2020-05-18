@@ -52,7 +52,7 @@ var server = http.createServer(function (req, res) {
     res.write(fourZero);
   }
   if(req.url!=="404.html"&&req.url!=="/index.html"&&req.url!=="/"&&req.url!=="/style.css"&&req.url!=="/index.js"){
-    res.writeHead(200, {
+    res.writeHead(404, {
       "Content-Type": "text/html"
     });
     res.write(fourZero);
