@@ -8,6 +8,7 @@ var fs= require('fs');
 var http= require('http');
 var path= require('path');
 
+
 var indexJs= fs.readFileSync("./public/index.js",'utf8');
 console.log("read JS");
 var style= fs.readFileSync("./public/style.css",'utf8');
@@ -51,7 +52,7 @@ var server = http.createServer(function (req, res) {
     res.write(fourZero);
   }
   if(req.url!=="404.html"&&req.url!=="/index.html"&&req.url!=="/"&&req.url!=="/style.css"&&req.url!=="/index.js"){
-    res.writeHead(404, {
+    res.writeHead(200, {
       "Content-Type": "text/html"
     });
     res.write(fourZero);
