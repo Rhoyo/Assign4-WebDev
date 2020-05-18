@@ -1,5 +1,5 @@
 /*
- * Assignment 4,
+ * Assignment 4
  *
  * name: Ryan Ho
  * email: hor@oregonstate.edu
@@ -7,22 +7,28 @@
 var fs= require('fs');
 var http= require('http');
 var path= require('path');
-var indexHtml= fs.readFileSync('./public/index.html','utf8');
-console.log("==Read indexHtml");
-var indexJs= fs.readFileSync('./public/index.js','utf8');
-console.log("==Read indexJs");
-var style= fs.readFileSync('./public/style.css','utf8');
-console.log("==Read style");
-var fourZero= fs.readFileSync('./public/404.html','utf8');
-console.log("==Read fourZero");
 
-var server= http.createServer(function(req,res){
-  console.log("x");
-  if(req.url=="/index.html"){
+var indexJs= fs.readFileSync("./public/index.js",'utf8');
+console.log("==Read indexJs");
+var style= fs.readFileSync("./public/style.css",'utf8');
+console.log("==Read style");
+
+var indexHtml= fs.readFileSync("./public/index.html",'utf8');
+console.log("==Read indexHtml");
+var fourZero= fs.readFileSync("./public/404.html",'utf8');
+console.log("==read 404");
+
+var server = http.createServer(function (req, res) {
+  console.log("== Got a request");
+  console.log("  -- HTTP method:", req.method);
+  console.log("  -- Resource:", req.url);
+  console.log("  -- Headers:", req.headers);
+
+  if(req.url=="/style.css"){
     res.writeHead(200, {
-      "Content-Type": "text/html"
+      "Content-Type": "text/css"
     });
-    res.write(indexHtml);
+    res.write(style);
   }
   if(req.url=="/index.js"){
     res.writeHead(200, {
@@ -30,23 +36,23 @@ var server= http.createServer(function(req,res){
     });
     res.write(indexJs);
   }
-  if(req.url=="/style.css"){
+  if(req.url=="/index.html"){
     res.writeHead(200, {
-      "Content-Type": "text/css"
+      "Content-Type": "text/html"
     });
-    res.write(style);
+    res.write(indexHtml);
+  }
+  if(req.url=="/"){
+    res.writeHead(200, {
+      "Content-Type": "text/html"
+    });
+      res.write(indexHtml);
   }
   if(req.url=="/404.html"){
     res.writeHead(200, {
       "Content-Type": "text/html"
     });
     res.write(fourZero);
-  }
-  if(req.url=="/"){
-    res.writeHead(200, {
-      "Content-Type": "text/html"
-    });
-    res.write(indexHtml);
   }
   else{
     res.writeHead(404, {
@@ -55,6 +61,8 @@ var server= http.createServer(function(req,res){
     res.write(fourZero);
   }
   res.end();
+
+
 });
 server.listen(3000,function(){
   console.log("server is listening on 3000");
