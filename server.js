@@ -7,7 +7,7 @@
 var fs= require('fs');
 var http= require('http');
 var path= require('path');
-const PORT = process.env.PORT || 3000;
+var PORT = process.env.PORT || 3000;
 
 
 var indexJs= fs.readFileSync("./public/index.js",'utf8');
