@@ -60,6 +60,4 @@ var server = http.createServer(function (req, res) {
   }
   res.end();
 });
-server.listen(3000,function(){
-  console.log("server is listening on 3000");
-});
+server.listen(3000);
